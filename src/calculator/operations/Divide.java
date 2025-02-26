@@ -17,6 +17,13 @@ public class Divide implements Operation {
   //  기능
   @Override
   public int doCalculate() {
-    return value1 / value2;
+    int result = 0;
+    try {
+      result = value1 / value2;
+    } catch (ArithmeticException e) {
+      System.out.println("0으로 나눌 수 없습니다.");
+    }
+
+    return result;
   }
 }

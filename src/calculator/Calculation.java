@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculation {
-
   /**
    * 입력에 'exit'가 포함될 경우 무한 반복 종료
    *
@@ -27,6 +26,11 @@ public class Calculation {
     return false;
   }
 
+  /**
+   * 입력에 'help'가 포함될 경우 안내 문구 출력
+   * @param userInput 사용자로부터 입력받은 문자열
+   * @return 'help'가 포함될 경우 true
+   */
   private boolean help(String userInput){
     if(userInput.contains("help")){
       System.out.println("\n안내 문구를 출력합니다.");
@@ -35,6 +39,21 @@ public class Calculation {
     }
 
     return false;
+  }
+
+  // 안내 문구 출력
+  private void printInstructions(){
+    System.out.println("\n=============================");
+    System.out.println("임력 예시: 1 + 2 (띄어쓰기 구분 없음)");
+    System.out.println("덧셈: 1 + 2");
+    System.out.println("뺄셈: 1 - 2");
+    System.out.println("곱셈: 1 * 2");
+    System.out.println("나눗셈: 1 / 2");
+    System.out.println("나머지 연산: 1 % 2");
+    System.out.println("제곱: 1 ^ 2");
+//    System.out.println("제곱근: 4 sqrt");
+    System.out.println("=============================\n");
+    System.out.println("");
   }
 
   /**
@@ -81,55 +100,36 @@ public class Calculation {
    * @param value2   두 번째 숫자
    */
   private void printCalcResult(int value1, String operator, int value2) {
-    Operation add = new Add(value1, operator, value2);
-    Operation sub = new Sub(value1, operator, value2);
-    Operation mul = new Mul(value1, operator, value2);
-    Operation divide = new Divide(value1, operator, value2);
-    Operation square = new Square(value1, operator, value2);
-//    Operation sqrt = new SquareRoot(value1, operator, value2);
+    Operation operation = null;
 
     switch (operator) {
       case "+":
-        System.out.println(value1 + " " + operator + " " + value2 + " = " + add.doCalculate());
+        operation = new Add(value1, operator, value2);
         break;
       case "-":
-        System.out.println(value1 + " " + operator + " " + value2 + " = " + sub.doCalculate());
+        operation = new Sub(value1, operator, value2);
         break;
       case "*":
-        System.out.println(value1 + " " + operator + " " + value2 + " = " + mul.doCalculate());
+        operation = new Mul(value1, operator, value2);
         break;
       case "/":
-        System.out.println(value1 + " " + operator + " " + value2 + " = " + divide.doCalculate());
+        operation = new Divide(value1, operator, value2);
         break;
       case "^":
-        System.out.println(value1 + " " + operator + " " + value2 + " = " + square.doCalculate());
+        operation = new Square(value1, operator, value2);
         break;
 //      case "sqrt":
-//        System.out.println(value1 + " " + operator + " " + value2 + " = " + sqrt.doCalculate());
+//        operation = new Sqrt(value1, operator);
 //        break;
       default:
+        System.out.println("지원하지 않는 연산자입니다.");
         break;
     }
-  }
-
-  // 안내 문구 출력
-  private void printInstructions(){
-    System.out.println("\n=============================");
-    System.out.println("임력 예시: 1 + 2 (띄어쓰기 구분 없음)");
-    System.out.println("덧셈: 1 + 2");
-    System.out.println("뺄셈: 1 - 2");
-    System.out.println("곱셈: 1 * 2");
-    System.out.println("나눗셈: 1 / 2");
-    System.out.println("나머지 연산: 1 % 2");
-    System.out.println("제곱: 1 ^ 2");
-//    System.out.println("제곱근: 4 sqrt");
-    System.out.println("=============================\n");
-    System.out.println("");
+    System.out.println(value1 + " " + operator + " " + value2 + " = " + operation.doCalculate());
   }
 
   // 프로그램 시작 지점
   public void start() {
-
     while (true) {
       System.out.println("'help' 입력 시 안내 문구가 출력됩니다.");
       System.out.println("'exit' 입력 시 프로그램이 종료됩니다.");
