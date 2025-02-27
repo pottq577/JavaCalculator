@@ -3,6 +3,7 @@ package main.com.Sparta.Calculator.App;
 import java.util.ArrayList;
 import java.util.Scanner;
 import main.com.Sparta.Calculator.Operations.Calculation;
+import main.com.Sparta.Calculator.Operations.Results;
 import main.com.Sparta.Calculator.Utils.ConvertToNumberList;
 import main.com.Sparta.Calculator.Utils.Help;
 import main.com.Sparta.Calculator.Utils.InputParser;
@@ -10,8 +11,9 @@ import main.com.Sparta.Calculator.Utils.Quit;
 
 public class Calculator {
 
-  Quit quit = new Quit("");
-  Help help = new Help("");
+  Quit quit;
+  Help help;
+  Results results;
 
   /**
    * 사용자가 입력한 문자열을 전처리하는 과정
@@ -33,38 +35,49 @@ public class Calculator {
       double value2 = (Double) convertedNumberList.get(2);
       String operator = (String) convertedNumberList.get(1);
 
-      Calculation calculator = new Calculation(value1, operator, value2);
-      return calculator;
+      return new Calculation(value1, operator, value2);
     } catch (Exception e) {
       System.out.println("잘못된 입력입니다.");
     }
 
-    return null;
+    return new Calculation();
   }
 
   // 프로그램 시작 지점
   public void start() {
-    System.out.println("'help' 입력 시 안내 문구가 출력됩니다.");
-    System.out.println("'exit' 입력 시 프로그램이 종료됩니다.");
+    System.out.println("'help' 입력 시 안내 문구가 출력됩니다.\n");
+
     while (true) {
       System.out.print("수식 입력: ");
       Scanner scanner = new Scanner(System.in);
       String userInput = scanner.nextLine();
+      quit = new Quit(userInput);
+      help = new Help(userInput);
+      results = new Results(userInput);
 
-      if (quit.isQuit(userInput)) {
+      if (quit.isQuit()) {
         break;
       }
-      if (help.isHelp(userInput)) {
+      if (help.isHelp()) {
+        continue;
+      }
+      if (results.isRemove()) {
+        continue;
+      }
+      if (results.isShow()) {
         continue;
       }
 
       try {
         Calculation calculation = initCalculator(userInput);
         calculation.doCalculate();
+        calculation.printResult();
+        calculation.addResultList();
       } catch (Exception e) {
         System.out.println("'help'를 입력하여 입력 형식을 확인해주세요.");
       }
-      System.out.println("=============================\n");
+
+      System.out.println("\n=============================\n");
     }
   }
 }

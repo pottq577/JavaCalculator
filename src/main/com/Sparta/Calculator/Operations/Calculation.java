@@ -1,7 +1,5 @@
 package main.com.Sparta.Calculator.Operations;
 
-import java.util.List;
-
 public class Calculation implements Operation {
 
   //  속성
@@ -9,13 +7,16 @@ public class Calculation implements Operation {
   private double value2;
   private String operation;
   private double result;
-  private List<Double> resultList;
+  Results results = new Results(result);
 
   //  생성자
   public Calculation(double value1, String operation, double value2) {
     this.value1 = value1;
     this.value2 = value2;
     this.operation = operation;
+  }
+
+  public Calculation() {
   }
 
   //  기능
@@ -25,6 +26,7 @@ public class Calculation implements Operation {
   // 연산자에 따라 계산 결과 저장
   @Override
   public double doCalculate() {
+
     if (operation.equals("/") || operation.equals("%")) {
       if (value2 == 0) {
         System.out.println("0으로 나눌 수 없습니다.");
@@ -59,11 +61,10 @@ public class Calculation implements Operation {
           return 0;
       }
     } catch (Exception e) {
+      result = 0;
       System.out.println("잘못된 수식입니다.");
     }
-    printResult();
-    resultList.add(result);
-    return 0;
+    return result;
   }
 
   // 계산 결과 출력
@@ -76,20 +77,7 @@ public class Calculation implements Operation {
     }
   }
 
-  public void showResult(){
-    int i = 0;
-    for(double result : resultList){
-      i++;
-      System.out.println(i + "번째 결과: " + result);
-    }
-  }
-
-  public void removeResult() {
-    if (resultList.isEmpty()) {
-      System.out.println("저장된 계산 결과가 없습니다.");
-    } else{
-      System.out.println("가장 나중에 저장된 결과가 삭제됩니다.");
-      resultList.remove(0);
-    }
+  public void addResultList() {
+    results.addResult(result);
   }
 }
