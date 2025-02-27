@@ -15,6 +15,11 @@ public class Mod implements Operation {
   }
 
   //  기능
+  /**
+   * 나머지 연산 수행
+   * 0으로 나머지 연산 시 예외 처리
+   * @return value1 % value2
+   */
   @Override
   public double doCalculate() {
     double result = 0;

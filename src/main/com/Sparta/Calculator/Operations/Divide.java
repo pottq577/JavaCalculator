@@ -15,6 +15,11 @@ public class Divide implements Operation {
   }
 
   //  기능
+  /**
+   * 나눗셈 연산 수행
+   * 0으로 나눌 시 예외 처리
+   * @return value1 / 0
+   */
   @Override
   public double doCalculate() {
     double result = 0;

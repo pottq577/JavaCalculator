@@ -15,6 +15,10 @@ public class Square implements Operation {
   }
 
   //  기능
+  /**
+   * 제곱수 연산 수행
+   * @return value1 ^ value2
+   */
   public double doCalculate() {
     return Math.pow(value1, value2);
   }

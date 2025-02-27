@@ -13,6 +13,10 @@ public class SquareRoot implements Operation {
   }
 
   //  기능
+  /**
+   * 제곱근 연산 수행
+   * @return sqrt(value)
+   */
   @Override
   public double doCalculate() {
     return Math.sqrt(value);

@@ -15,6 +15,10 @@ public class Mul implements Operation {
   }
 
   //  기능
+  /**
+   * 곱셈 연산 수행
+   * @return value1 * value2
+   */
   @Override
   public double doCalculate() {
     return value1 * value2;
