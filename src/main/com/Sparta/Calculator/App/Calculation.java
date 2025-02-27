@@ -2,18 +2,17 @@ package main.com.Sparta.Calculator.App;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import main.com.Sparta.Calculator.Operations.Calculator;
 import main.com.Sparta.Calculator.Utils.ConvertToNumberList;
-import main.com.Sparta.Calculator.Utils.DisplayCalculationResult;
 import main.com.Sparta.Calculator.Utils.Help;
 import main.com.Sparta.Calculator.Utils.InputParser;
 import main.com.Sparta.Calculator.Utils.Quit;
 
 public class Calculation {
-
-  // 프로그램 시작 지점
   Quit quit = new Quit("");
   Help help = new Help("");
 
+  // 프로그램 시작 지점
   public void start() {
     while (true) {
       System.out.println("'help' 입력 시 안내 문구가 출력됩니다.");
@@ -38,12 +37,11 @@ public class Calculation {
       ArrayList<Object> convertedNumberList = convertToNumberList.convert(userInputArray);
 
       double value1 = (Double) convertedNumberList.get(0);
-      String operator = (String) convertedNumberList.get(1);
       double value2 = (Double) convertedNumberList.get(2);
+      String operator = (String) convertedNumberList.get(1);
 
-      DisplayCalculationResult displayCalculationResult = new DisplayCalculationResult(value1,
-          value2, operator);
-      displayCalculationResult.printResultByOperator(value1, operator, value2);
+      Calculator calculator = new Calculator(value1, operator, value2);
+      calculator.doCalculate();
       System.out.println("=============================\n");
     }
   }
