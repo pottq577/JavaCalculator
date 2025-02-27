@@ -2,6 +2,7 @@ package calculator.operations;
 
 public interface Operation {
 
-  public int doCalculate();
+  public double doCalculate();
+  public void printResult();
 
 }

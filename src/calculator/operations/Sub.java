@@ -3,12 +3,12 @@ package calculator.operations;
 public class Sub implements Operation {
 
   //  속성
-  private int value1;
-  private int value2;
+  private double value1;
+  private double value2;
   private String operation;
 
   //  생성자
-  public Sub(int value1, String operation, int value2) {
+  public Sub(double value1, String operation, double value2) {
     this.value1 = value1;
     this.value2 = value2;
     this.operation = operation;
@@ -16,7 +16,12 @@ public class Sub implements Operation {
 
   //  기능
   @Override
-  public int doCalculate() {
+  public double doCalculate() {
     return value1 - value2;
+  }
+
+  @Override
+  public void printResult() {
+    System.out.println(value1 + " " + operation + " " + value2 + " = " + doCalculate());
   }
 }

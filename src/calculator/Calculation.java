@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculation {
+
   /**
    * 입력에 'exit'가 포함될 경우 무한 반복 종료
    *
@@ -28,11 +29,12 @@ public class Calculation {
 
   /**
    * 입력에 'help'가 포함될 경우 안내 문구 출력
+   *
    * @param userInput 사용자로부터 입력받은 문자열
    * @return 'help'가 포함될 경우 true
    */
-  private boolean help(String userInput){
-    if(userInput.contains("help")){
+  private boolean help(String userInput) {
+    if (userInput.contains("help")) {
       System.out.println("\n안내 문구를 출력합니다.");
       printInstructions();
       return true;
@@ -42,7 +44,7 @@ public class Calculation {
   }
 
   // 안내 문구 출력
-  private void printInstructions(){
+  private void printInstructions() {
     System.out.println("\n=============================");
     System.out.println("임력 예시: 1 + 2 (띄어쓰기 구분 없음)");
     System.out.println("덧셈: 1 + 2");
@@ -51,7 +53,7 @@ public class Calculation {
     System.out.println("나눗셈: 1 / 2");
     System.out.println("나머지 연산: 1 % 2");
     System.out.println("제곱: 1 ^ 2");
-//    System.out.println("제곱근: 4 sqrt");
+    System.out.println("제곱근: 4 sqrt");
     System.out.println("=============================\n");
     System.out.println("");
   }
@@ -82,8 +84,12 @@ public class Calculation {
    */
   private ArrayList<Object> stringToInteger(String[] userInputArray) {
     ArrayList<Object> arrayList = new ArrayList<>();
-    int value1 = Integer.parseInt(userInputArray[0]);
-    int value2 = Integer.parseInt(userInputArray[2]);
+    double value1 = Double.parseDouble(userInputArray[0]);
+    double value2 = 0;
+
+    if (userInputArray.length == 3) {
+      value2 = Double.parseDouble(userInputArray[2]);
+    }
 
     arrayList.add(value1);
     arrayList.add(userInputArray[1]);
@@ -99,9 +105,12 @@ public class Calculation {
    * @param operator 연산자
    * @param value2   두 번째 숫자
    */
-  private void printCalcResult(int value1, String operator, int value2) {
+  private void printCalcResult(double value1, String operator, double value2) {
     Operation operation = null;
 
+    // TODO 02/07
+    //  case에 있는 "+", "-" 등을
+    //  ENUM(Operators)을 활용해서 활용하는 방법 찾기
     switch (operator) {
       case "+":
         operation = new Add(value1, operator, value2);
@@ -118,14 +127,14 @@ public class Calculation {
       case "^":
         operation = new Square(value1, operator, value2);
         break;
-//      case "sqrt":
-//        operation = new Sqrt(value1, operator);
-//        break;
+      case "sqrt":
+        operation = new SquareRoot(value1, operator);
+        break;
       default:
         System.out.println("지원하지 않는 연산자입니다.");
         break;
     }
-    System.out.println(value1 + " " + operator + " " + value2 + " = " + operation.doCalculate());
+    operation.printResult();
   }
 
   // 프로그램 시작 지점
@@ -141,12 +150,12 @@ public class Calculation {
         break;
       }
 
-      if(help(userInput)){
+      if (help(userInput)) {
         continue;
       }
 
-      int value1 = (Integer) stringToInteger(separateString(userInput)).get(0);
-      int value2 = (Integer) stringToInteger(separateString(userInput)).get(2);
+      double value1 = (Double) stringToInteger(separateString(userInput)).get(0);
+      double value2 = (Double) stringToInteger(separateString(userInput)).get(2);
       String operator = (String) stringToInteger(separateString(userInput)).get(1);
 
       printCalcResult(value1, operator, value2);

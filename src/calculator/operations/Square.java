@@ -3,19 +3,24 @@ package calculator.operations;
 public class Square implements Operation {
 
   //  속성
-  private int value1;
+  private double value1;
   private String operation;
-  private int value2;
+  private double value2;
 
   //  생성자
-  public Square(int value1, String operation, int value2) {
+  public Square(double value1, String operation, double value2) {
     this.value1 = value1;
     this.operation = operation;
     this.value2 = value2;
   }
 
   //  기능
-  public int doCalculate() {
-    return (int) Math.pow(value1, value2);
+  public double doCalculate() {
+    return Math.pow(value1, value2);
+  }
+
+  @Override
+  public void printResult() {
+    System.out.println(value1 + " " + operation + " " + value2 + " = " + doCalculate());
   }
 }

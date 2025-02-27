@@ -3,12 +3,12 @@ package calculator.operations;
 public class Mod implements Operation {
 
   //  속성
-  private int value1;
-  private int value2;
+  private double value1;
+  private double value2;
   private String operation;
 
   //  생성자
-  public Mod(int value1, String operation, int value2) {
+  public Mod(double value1, String operation, double value2) {
     this.value1 = value1;
     this.value2 = value2;
     this.operation = operation;
@@ -16,8 +16,8 @@ public class Mod implements Operation {
 
   //  기능
   @Override
-  public int doCalculate() {
-    int result = 0;
+  public double doCalculate() {
+    double result = 0;
     try {
       result = value1 % value2;
     } catch (ArithmeticException e) {
@@ -25,5 +25,10 @@ public class Mod implements Operation {
     }
 
     return result;
+  }
+
+  @Override
+  public void printResult() {
+    System.out.println(value1 + " " + operation + " " + value2 + " = " + doCalculate());
   }
 }
