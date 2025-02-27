@@ -1,6 +1,6 @@
-package calculator.operations;
+package main.com.Sparta.Calculator.Operations;
 
-public class Divide implements Operation {
+public class Mul implements Operation {
 
   //  속성
   private double value1;
@@ -8,7 +8,7 @@ public class Divide implements Operation {
   private String operation;
 
   //  생성자
-  public Divide(double value1, String operation, double value2) {
+  public Mul(double value1, String operation, double value2) {
     this.value1 = value1;
     this.value2 = value2;
     this.operation = operation;
@@ -17,14 +17,7 @@ public class Divide implements Operation {
   //  기능
   @Override
   public double doCalculate() {
-    double result = 0;
-    try {
-      result = value1 / value2;
-    } catch (ArithmeticException e) {
-      System.out.println("0으로 나눌 수 없습니다.");
-    }
-
-    return result;
+    return value1 * value2;
   }
 
   @Override

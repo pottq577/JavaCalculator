@@ -1,12 +1,12 @@
-package calculator;
+package main.com.Sparta.Calculator.App;
 
-import calculator.operations.Add;
-import calculator.operations.Divide;
-import calculator.operations.Mul;
-import calculator.operations.Operation;
-import calculator.operations.Square;
-import calculator.operations.SquareRoot;
-import calculator.operations.Sub;
+import main.com.Sparta.Calculator.Operations.Add;
+import main.com.Sparta.Calculator.Operations.Divide;
+import main.com.Sparta.Calculator.Operations.Mul;
+import main.com.Sparta.Calculator.Operations.Operation;
+import main.com.Sparta.Calculator.Operations.Square;
+import main.com.Sparta.Calculator.Operations.SquareRoot;
+import main.com.Sparta.Calculator.Operations.Sub;
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package calculator;
+package main.com.Sparta.Calculator.App;
 
 public class Main {
 
