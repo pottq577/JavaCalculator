@@ -98,7 +98,6 @@ public class Menu {
     System.out.println("나눗셈: 1 / 2");
     System.out.println("나머지 연산: 1 % 2");
     System.out.println("제곱: 1 ^ 2");
-    System.out.println("제곱근: 4 sqrt");
     System.out.println("============================\n");
 
     System.out.println("\n=============명령어=============");
