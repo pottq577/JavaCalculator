@@ -1,15 +1,24 @@
 package test.com.Sparta.Calculator.App;
 
+import java.util.Scanner;
 import test.com.Sparta.Calculator.Operations.Operators;
 
 public class Main {
 
   public static void main(String[] args) {
-    Operators[] operators = Operators.values();
+    double value1 = 12;
+    double value2 = 4;
 
-    int value1 = 1;
-    int value2 = 2;
+    while (true) {
+      System.out.println("연산자: ");
+      Scanner scanner = new Scanner(System.in);
+      String operator = scanner.nextLine();
 
-    System.out.println(value1);
+      Calculate calculate = new Calculate(value1, operator, value2);
+
+      double result = calculate.calc();
+      System.out.println("result = " + result);
+    }
   }
+
 }

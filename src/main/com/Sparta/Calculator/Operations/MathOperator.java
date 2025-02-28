@@ -22,10 +22,6 @@ public class MathOperator {
   }
 
   //  기능
-  // TODO 02/27
-  //  case에 있는 "+", "-" 등을
-  //  ENUM(Operators)을 활용해서 활용하는 방법 찾기
-
   // 연산자에 따라 계산 결과 저장
   public void calculate() {
 
@@ -36,7 +32,7 @@ public class MathOperator {
 
       // 0으로 나누는지 검증
       validateDivisionByZero();
-      double result = performCalculation();
+      double result = compute(value1, value2);
       resultManager.setResult(result);
 
     } catch (IllegalArgumentException e) {
@@ -61,24 +57,13 @@ public class MathOperator {
 
   /**
    * 연산자에 따라 연산 수행
+   *
+   * @param value1 첫 번째 피연산자
+   * @param value2 두 번째 피연산자
    * @return 연산 결과값
    */
-  private double performCalculation() {
-    switch (operation) {
-      case "+":
-        return value1 + value2;
-      case "-":
-        return value1 - value2;
-      case "*":
-        return value1 * value2;
-      case "/":
-        return value1 / value2;
-      case "%":
-        return value1 % value2;
-      case "^":
-        return Math.pow(value1, value2);
-      default:
-        throw new IllegalArgumentException("지원하지 않는 연산자입니다: " + operation);
-    }
+  public double compute(double value1, double value2) {
+    Operators operators = Operators.fromSymbol(this.operation);
+    return operators.compute(value1, value2);
   }
 }
