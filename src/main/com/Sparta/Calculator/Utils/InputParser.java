@@ -3,8 +3,7 @@ package main.com.Sparta.Calculator.Utils;
 public class InputParser {
 
   //  속성
-  private String userInput;
-  private String[] userInputArray;
+  private final String userInput;
 
   //  생성자
   public InputParser(String userInput) {

@@ -4,21 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import main.com.Sparta.Calculator.Operations.MathOperator;
 import main.com.Sparta.Calculator.Utils.ResultManager;
-import main.com.Sparta.Calculator.Utils.Results;
 import main.com.Sparta.Calculator.Utils.Converter;
-import main.com.Sparta.Calculator.Utils.Help;
 import main.com.Sparta.Calculator.Utils.InputParser;
-import main.com.Sparta.Calculator.Utils.Quit;
+import main.com.Sparta.Calculator.Utils.Menu;
 
 public class Calculator {
 
   //  속성
-  private static ResultManager resultManager = new ResultManager();
+  private static final ResultManager resultManager = new ResultManager();
 
   //  생성자
 
   //  기능
-
   /**
    * 사용자가 입력한 문자열을 전처리하는 과정
    *
@@ -42,24 +39,9 @@ public class Calculator {
       return new MathOperator(value1, operator, value2, resultManager);
     } catch (Exception e) {
       System.out.println("잘못된 입력입니다.");
-      System.out.println(e);
     }
 
     return new MathOperator();
-  }
-
-  /**
-   * 특정 커맨드가 들어왔을 때 처리하는 로직
-   *
-   * @param userInput 사용자 입력
-   * @return help, ls, a, ac 입력 시 true 반환
-   */
-  private boolean handleCommands(String userInput) {
-
-    Help help = new Help(userInput);
-    Results results = new Results();
-
-    return help.isHelp() || results.handleCommand(userInput);
   }
 
   // 프로그램 시작 지점
@@ -71,24 +53,14 @@ public class Calculator {
     while (true) {
       System.out.print("수식 입력: ");
       String userInput = scanner.nextLine();
-      Quit quit = new Quit(userInput);
+      Menu menu = new Menu(userInput, resultManager);
 
-      if (quit.isQuit()) {
+      if (menu.isExit()) {
         break;
       }
-
-      if (userInput.equals("ls")) {
-        switch (userInput) {
-          case "a":
-            resultManager.removeResult();
-            continue;
-          case "ac":
-            resultManager.removeAllResults();
-            continue;
-          case "ls":
-            resultManager.displayResults();
-            continue;
-        }
+      if (menu.isCommand()) {
+        menu.handleCommands();
+        continue;
       }
 
       try {
@@ -96,10 +68,9 @@ public class Calculator {
         mathOperator.calculate();
         resultManager.printCurrentResult();
         resultManager.storeResult();
-
       } catch (Exception e) {
         System.out.println("'help'를 입력하여 입력 형식을 확인해주세요.");
-        e.printStackTrace();
+        System.out.println(e.getMessage());
       }
 
       System.out.println("\n=============================\n");

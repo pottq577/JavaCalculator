@@ -1,7 +1,6 @@
 package main.com.Sparta.Calculator.Operations;
 
 import main.com.Sparta.Calculator.Utils.ResultManager;
-import main.com.Sparta.Calculator.Utils.Results;
 
 public class MathOperator {
 
@@ -9,8 +8,6 @@ public class MathOperator {
   private double value1;
   private double value2;
   private String operation;
-  private double result;
-  Results results = new Results();
   private ResultManager resultManager;
 
   //  생성자
@@ -38,6 +35,7 @@ public class MathOperator {
       }
     }
     try {
+      double result;
       switch (operation) {
         case "+":
           result = value1 + value2;
@@ -67,12 +65,7 @@ public class MathOperator {
       resultManager.setResult(result);
     } catch (Exception e) {
       resultManager.setResult(0);
-      System.out.println(e.getMessage());
       System.out.println("잘못된 수식입니다.");
     }
-  }
-
-  public void storeResult() {
-    results.addResult(result);
   }
 }
