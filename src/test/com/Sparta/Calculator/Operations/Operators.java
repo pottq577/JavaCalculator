@@ -1,4 +1,4 @@
-package main.com.Sparta.Calculator.Operations;
+package test.com.Sparta.Calculator.Operations;
 
 public enum Operators {
   ADD("+"),
