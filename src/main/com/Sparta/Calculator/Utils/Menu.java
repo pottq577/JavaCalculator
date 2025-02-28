@@ -13,6 +13,12 @@ public class Menu {
   }
 
   //  기능
+
+  /**
+   * 사용자 입력이 커맨드인지 판단
+   *
+   * @return 특정 커맨드 포함 시 true
+   */
   public boolean isCommand() {
     return switch (userInput) {
       case "help", "ls", "a", "ac" -> true;
@@ -20,6 +26,7 @@ public class Menu {
     };
   }
 
+  // 커맨드 별 기능 동작
   public void handleCommands() {
     switch (userInput) {
       case "help" -> printInstructions();
@@ -29,6 +36,11 @@ public class Menu {
     }
   }
 
+  /**
+   * 사용자 입력이 'exit'인지 판단
+   *
+   * @return 사용자 입력이 'exit'일 경우 true
+   */
   public boolean isExit() {
     if (userInput.contains("exit")) {
       System.out.println("프로그램을 종료합니다.");
@@ -37,6 +49,7 @@ public class Menu {
     return false;
   }
 
+  // 저장된 결과 출력
   public void displayResults() {
     if (resultManager.getResult().isEmpty()) {
       printNoResultsMessage();
@@ -46,6 +59,7 @@ public class Menu {
     }
   }
 
+  // 가장 먼저 저장된 결과 삭제
   public void removeResult() {
     if (resultManager.getResult().isEmpty()) {
       printNoResultsMessage();
@@ -56,6 +70,7 @@ public class Menu {
     }
   }
 
+  // 모든 결과 삭제
   public void removeAllResults() {
     if (resultManager.getResult().isEmpty()) {
       printNoResultsMessage();
@@ -66,12 +81,11 @@ public class Menu {
     }
   }
 
-
+  // 저장된 결과가 없을 때 출력하는 메세지
   public void printNoResultsMessage() {
     System.out.println("\n저장된 계산 결과가 없습니다.");
     System.out.println("\n=============================\n");
   }
-
 
   // 안내 문구 출력
   private void printInstructions() {

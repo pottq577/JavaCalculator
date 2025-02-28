@@ -13,14 +13,15 @@ public class Calculator {
   //  속성
   private static final ResultManager resultManager = new ResultManager();
 
-  //  생성자
-
   //  기능
   /**
    * 사용자가 입력한 문자열을 전처리하는 과정
+   * - 문자열을 문자열 배열로 반환 (공백 제거)
+   * - 문자열 형태의 숫자를 실수형으로 변환
+   * - 최종 결과를 ArrayList에 저장
    *
    * @param userInput 사용자 입력 문자열
-   * @return Calculator 객체
+   * @return MathOperator 객체
    */
   private MathOperator parseAndCreateOperator(String userInput) {
     try {
@@ -55,6 +56,7 @@ public class Calculator {
       String userInput = scanner.nextLine();
       Menu menu = new Menu(userInput, resultManager);
 
+      // userInput이 특정 커맨드일 때 로직
       if (menu.isExit()) {
         break;
       }
