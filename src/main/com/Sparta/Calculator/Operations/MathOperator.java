@@ -1,6 +1,6 @@
 package main.com.Sparta.Calculator.Operations;
 
-public class Calculation implements Operation {
+public class MathOperator {
 
   //  속성
   private double value1;
@@ -10,13 +10,13 @@ public class Calculation implements Operation {
   Results results = new Results();
 
   //  생성자
-  public Calculation(double value1, String operation, double value2) {
+  public MathOperator(double value1, String operation, double value2) {
     this.value1 = value1;
     this.value2 = value2;
     this.operation = operation;
   }
 
-  public Calculation() {
+  public MathOperator() {
   }
 
   //  기능
@@ -24,8 +24,7 @@ public class Calculation implements Operation {
   //  case에 있는 "+", "-" 등을
   //  ENUM(Operators)을 활용해서 활용하는 방법 찾기
   // 연산자에 따라 계산 결과 저장
-  @Override
-  public double doCalculate() {
+  public double calculate() {
 
     if (operation.equals("/") || operation.equals("%")) {
       if (value2 == 0) {
@@ -69,7 +68,6 @@ public class Calculation implements Operation {
   }
 
   // 계산 결과 출력
-  @Override
   public void printResult() {
     if (operation.equals("sqrt")) {
       System.out.println(operation + "(" + value1 + ") = " + result);
@@ -78,7 +76,7 @@ public class Calculation implements Operation {
     }
   }
 
-  public void addResultList() {
+  public void storeResult() {
     results.addResult(result);
   }
 }
