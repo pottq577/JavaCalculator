@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class ConvertToNumberList {
   //  속성
-  String[] userInputArray;
-  ArrayList<Object> arrayList = new ArrayList<>();
+  private String[] userInputArray;
+  private ArrayList<Object> arrayList;
   double value1;
   double value2;
 
   //  생성자
   public ConvertToNumberList(String[] userInputArray) {
     this.userInputArray = userInputArray;
+    this.arrayList = new ArrayList<>();
   }
 
   //  기능

@@ -38,33 +38,39 @@ public class Calculator {
       return new Calculation(value1, operator, value2);
     } catch (Exception e) {
       System.out.println("잘못된 입력입니다.");
+      System.out.println(e.getMessage());
     }
 
     return new Calculation();
+  }
+
+  /**
+   * 특정 커맨드가 들어왔을 때 처리하는 로직
+   * @param userInput 사용자 입력
+   * @return help, ls, a, ac 입력 시 true 반환
+   */
+  private boolean handleCommands(String userInput) {
+    help = new Help(userInput);
+    results = new Results();
+
+    return help.isHelp() || results.handleCommand(userInput);
   }
 
   // 프로그램 시작 지점
   public void start() {
     System.out.println("'help' 입력 시 안내 문구가 출력됩니다.\n");
 
+    Scanner scanner = new Scanner(System.in);
+
     while (true) {
       System.out.print("수식 입력: ");
-      Scanner scanner = new Scanner(System.in);
       String userInput = scanner.nextLine();
       quit = new Quit(userInput);
-      help = new Help(userInput);
-      results = new Results(userInput);
 
       if (quit.isQuit()) {
         break;
       }
-      if (help.isHelp()) {
-        continue;
-      }
-      if (results.isRemove()) {
-        continue;
-      }
-      if (results.isShow()) {
+      if (handleCommands(userInput)) {
         continue;
       }
 
@@ -73,6 +79,7 @@ public class Calculator {
         calculation.doCalculate();
         calculation.printResult();
         calculation.addResultList();
+
       } catch (Exception e) {
         System.out.println("'help'를 입력하여 입력 형식을 확인해주세요.");
       }

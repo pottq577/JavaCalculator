@@ -7,7 +7,7 @@ public class Calculation implements Operation {
   private double value2;
   private String operation;
   private double result;
-  Results results = new Results(result);
+  Results results = new Results();
 
   //  생성자
   public Calculation(double value1, String operation, double value2) {
@@ -64,6 +64,7 @@ public class Calculation implements Operation {
       result = 0;
       System.out.println("잘못된 수식입니다.");
     }
+
     return result;
   }
 
