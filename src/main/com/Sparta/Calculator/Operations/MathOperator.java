@@ -34,18 +34,21 @@ public class MathOperator {
         throw new IllegalArgumentException("연산자가 설정되지 않았습니다.");
       }
 
+      // 0으로 나누는지 검증
       validateDivisionByZero();
-
       double result = performCalculation();
-
       resultManager.setResult(result);
+
     } catch (IllegalArgumentException e) {
       System.out.println("계산 오류: " + e.getMessage());
       resultManager.setResult(0);
+      throw e;
     } catch (ArithmeticException e) {
       System.out.println("수학적 오류: " + e.getMessage());
+      throw e;
     } catch (Exception e) {
       System.out.println("예상치 못한 오류: " + e.getMessage());
+      throw e;
     }
   }
 
