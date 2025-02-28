@@ -3,7 +3,8 @@ package main.com.Sparta.Calculator.App;
 import java.util.ArrayList;
 import java.util.Scanner;
 import main.com.Sparta.Calculator.Operations.MathOperator;
-import main.com.Sparta.Calculator.Operations.Results;
+import main.com.Sparta.Calculator.Utils.ResultManager;
+import main.com.Sparta.Calculator.Utils.Results;
 import main.com.Sparta.Calculator.Utils.Converter;
 import main.com.Sparta.Calculator.Utils.Help;
 import main.com.Sparta.Calculator.Utils.InputParser;
@@ -12,20 +13,19 @@ import main.com.Sparta.Calculator.Utils.Quit;
 public class Calculator {
 
   //  속성
-  private Quit quit;
-  private Help help;
-  private Results results;
+  private static ResultManager resultManager = new ResultManager();
 
   //  생성자
 
   //  기능
+
   /**
    * 사용자가 입력한 문자열을 전처리하는 과정
    *
    * @param userInput 사용자 입력 문자열
    * @return Calculator 객체
    */
-  private static MathOperator parseAndCreateOperator(String userInput) {
+  private MathOperator parseAndCreateOperator(String userInput) {
     try {
       // 숫자와 연산자를 분리해서 문자열 배열로 반환
       InputParser inputParser = new InputParser(userInput);
@@ -39,7 +39,7 @@ public class Calculator {
       double value2 = (Double) convertedNumberList.get(2);
       String operator = (String) convertedNumberList.get(1);
 
-      return new MathOperator(value1, operator, value2);
+      return new MathOperator(value1, operator, value2, resultManager);
     } catch (Exception e) {
       System.out.println("잘못된 입력입니다.");
       System.out.println(e);
@@ -55,8 +55,9 @@ public class Calculator {
    * @return help, ls, a, ac 입력 시 true 반환
    */
   private boolean handleCommands(String userInput) {
-    help = new Help(userInput);
-    results = new Results();
+
+    Help help = new Help(userInput);
+    Results results = new Results();
 
     return help.isHelp() || results.handleCommand(userInput);
   }
@@ -70,26 +71,40 @@ public class Calculator {
     while (true) {
       System.out.print("수식 입력: ");
       String userInput = scanner.nextLine();
-      quit = new Quit(userInput);
+      Quit quit = new Quit(userInput);
 
       if (quit.isQuit()) {
         break;
       }
-      if (handleCommands(userInput)) {
-        continue;
+
+      if (userInput.equals("ls")) {
+        switch (userInput) {
+          case "a":
+            resultManager.removeResult();
+            continue;
+          case "ac":
+            resultManager.removeAllResults();
+            continue;
+          case "ls":
+            resultManager.displayResults();
+            continue;
+        }
       }
 
       try {
         MathOperator mathOperator = parseAndCreateOperator(userInput);
         mathOperator.calculate();
-        mathOperator.printResult();
-        mathOperator.storeResult();
+        resultManager.printCurrentResult();
+        resultManager.storeResult();
 
       } catch (Exception e) {
         System.out.println("'help'를 입력하여 입력 형식을 확인해주세요.");
+        e.printStackTrace();
       }
 
       System.out.println("\n=============================\n");
+
     }
+
   }
 }

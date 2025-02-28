@@ -1,4 +1,4 @@
-package main.com.Sparta.Calculator.Operations;
+package main.com.Sparta.Calculator.Utils;
 
 import java.util.ArrayList;
 
