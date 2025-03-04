@@ -32,6 +32,8 @@ public class MathOperator {
 
       // 0으로 나누는지 검증
       validateDivisionByZero();
+
+      // 연산자에 따라 계산 진행
       double result = compute(value1, value2);
       resultManager.setResult(result);
 
@@ -63,6 +65,7 @@ public class MathOperator {
    * @return 연산 결과값
    */
   public double compute(double value1, double value2) {
+    // enum 활용
     Operators operators = Operators.fromSymbol(this.operation);
     return operators.compute(value1, value2);
   }

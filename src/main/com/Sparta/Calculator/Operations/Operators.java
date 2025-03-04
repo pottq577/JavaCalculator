@@ -7,18 +7,6 @@ public enum Operators implements Computable {
       return value1 + value2;
     }
   },
-  SUBTRACT("-") {
-    @Override
-    public double compute(double value1, double value2) {
-      return value1 - value2;
-    }
-  },
-  MULTIPLY("*") {
-    @Override
-    public double compute(double value1, double value2) {
-      return value1 * value2;
-    }
-  },
   DIVIDE("/") {
     @Override
     public double compute(double value1, double value2) {
@@ -37,10 +25,22 @@ public enum Operators implements Computable {
       return value1 % value2;
     }
   },
+  MULTIPLY("*") {
+    @Override
+    public double compute(double value1, double value2) {
+      return value1 * value2;
+    }
+  },
   POWER("^") {
     @Override
     public double compute(double value1, double value2) {
       return Math.pow(value1, value2);
+    }
+  },
+  SUBTRACT("-") {
+    @Override
+    public double compute(double value1, double value2) {
+      return value1 - value2;
     }
   };
 
@@ -53,6 +53,7 @@ public enum Operators implements Computable {
   public static Operators fromSymbol(String symbol) {
     for (Operators op : values()) {
       if (op.symbol.equals(symbol)) {
+//        System.out.println(op);
         return op;
       }
     }

@@ -1,6 +1,6 @@
 package main.com.Sparta.Calculator.App;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import main.com.Sparta.Calculator.Operations.MathOperator;
 import main.com.Sparta.Calculator.Utils.ResultManager;
@@ -23,7 +23,7 @@ public class Calculator {
    */
   private MathOperator createOperator(String userInput) {
     try {
-      ArrayList<Object> convertedNumberList = splitAndParsing(userInput);
+      List<Object> convertedNumberList = splitAndParsing(userInput);
 
       try {
         double value1 = (Double) convertedNumberList.get(0);
@@ -53,7 +53,7 @@ public class Calculator {
    * @param userInput 사용자 입력 문자열
    * @return [피연산자(double), 연산자(String), 피연산자(double)] 형태의 ArrayList
    */
-  private ArrayList<Object> splitAndParsing(String userInput) {
+  private List<Object> splitAndParsing(String userInput) {
     if (userInput == null || userInput.trim().isEmpty()) {
       throw new IllegalArgumentException("입력값이 비어있습니다.");
     }
@@ -67,7 +67,7 @@ public class Calculator {
 
     // 숫자만 형 변환(String -> double)한 후 ArrayList에 저장
     Converter converter = new Converter(userInputArray);
-    ArrayList<Object> convertedNumberList = converter.convertStringToNumberArray();
+    List<Object> convertedNumberList = converter.convertStringToNumberArray();
     if (convertedNumberList.size() != 3) {
       throw new IllegalArgumentException("잘못된 수식 형식입니다.");
     }

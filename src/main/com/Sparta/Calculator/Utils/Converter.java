@@ -1,11 +1,12 @@
 package main.com.Sparta.Calculator.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Converter {
   //  속성
   private final String[] userInputArray;
-  private final ArrayList<Object> arrayList;
+  private final List<Object> arrayList;
 
   //  생성자
   public Converter(String[] userInputArray) {
@@ -31,7 +32,7 @@ public class Converter {
    *
    * @return [숫자(int), 연산자(String), 숫자(int)] 형태로 변환한 ArrayList
    */
-  public ArrayList<Object> convertStringToNumberArray() {
+  public List<Object> convertStringToNumberArray() {
     double value1 = Double.parseDouble(userInputArray[0]);
     double value2 = 0;
     if (userInputArray.length == 3) {
