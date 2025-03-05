@@ -1,6 +1,8 @@
 package main.com.Sparta.Calculator.Utils;
 
 import java.util.ArrayList;
+import main.com.Sparta.Calculator.App.Calculator;
+import main.com.Sparta.Calculator.Operations.MathOperator;
 
 public class ResultManager {
   //  속성

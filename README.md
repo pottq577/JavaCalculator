@@ -281,9 +281,18 @@ ac    - 모든 결과 삭제
 
 ## 📝 프로젝트 명세
 ###  클래스 다이어그램 UML
-
+![](docs/images/UML.png)
 
 ### Flowchart
+<details>
+  <summary>간단한 순서도</summary>
+  ![](docs/images/flowchart-simple.png)
+</details>
+
+<details>
+  <summary>자세한 순서도</summary>
+  ![](docs/images/flowchart-detail.png)
+</details>
 
 <br/>
 
