@@ -4,6 +4,12 @@ import main.com.Sparta.Calculator.Utils.ResultManager;
 
 public class MathOperator {
 
+  private static final String OPERATOR_NOT_SET = "연산자가 설정되지 않았습니다.";
+  private static final String CALCULATION_ERROR = "계산 오류: ";
+  private static final String MATH_ERROR = "수학적 오류: ";
+  private static final String UNEXPECTED_ERROR = "예상치 못한 오류: ";
+  private static final String DIVIDE_BY_ZERO = "0으로 나눌 수 없습니다.";
+
   //  속성
   private double value1;
   private double value2;
@@ -27,7 +33,7 @@ public class MathOperator {
 
     try {
       if (operation == null) {
-        throw new IllegalArgumentException("연산자가 설정되지 않았습니다.");
+        throw new IllegalArgumentException(OPERATOR_NOT_SET);
       }
 
       // 0으로 나누는지 검증
@@ -38,14 +44,14 @@ public class MathOperator {
       resultManager.setResult(result);
 
     } catch (IllegalArgumentException e) {
-      System.out.println("계산 오류: " + e.getMessage());
+      System.out.println(CALCULATION_ERROR + e.getMessage());
       resultManager.setResult(0);
       throw e;
     } catch (ArithmeticException e) {
-      System.out.println("수학적 오류: " + e.getMessage());
+      System.out.println(MATH_ERROR + e.getMessage());
       throw e;
     } catch (Exception e) {
-      System.out.println("예상치 못한 오류: " + e.getMessage());
+      System.out.println(UNEXPECTED_ERROR + e.getMessage());
       throw e;
     }
   }
@@ -53,7 +59,7 @@ public class MathOperator {
   // 0으로 나눗셈 / 나머지 연산을 하는지 검증
   private void validateDivisionByZero() {
     if ((operation.equals("/") || operation.equals("%")) && value2 == 0) {
-      throw new ArithmeticException("0으로 나눌 수 없습니다.");
+      throw new ArithmeticException(DIVIDE_BY_ZERO);
     }
   }
 

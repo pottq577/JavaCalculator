@@ -2,6 +2,9 @@ package main.com.Sparta.Calculator.Utils;
 
 public class Menu {
 
+  private static final String EXIT_MESSAGE = "\n프로그램을 종료합니다.";
+  private static final String NO_RESULTS = "\n저장된 계산 결과가 없습니다.\n";
+  private static final String ALL_RESULT_DELETED = "\n모든 결과가 삭제되었습니다.\n";
   //  속성
   private final String userInput;
   private final ResultManager resultManager;
@@ -43,7 +46,7 @@ public class Menu {
    */
   public boolean isExit() {
     if (userInput.contains("exit")) {
-      System.out.println("프로그램을 종료합니다.");
+      System.out.println(EXIT_MESSAGE);
       return true;
     }
     return false;
@@ -52,20 +55,22 @@ public class Menu {
   // 저장된 결과 출력
   public void displayResults() {
     if (resultManager.getResult().isEmpty()) {
-      printNoResultsMessage();
+      System.out.println(NO_RESULTS);
+      printFooter(30);
     } else {
-      System.out.println("\n저장된 결과: " + resultManager.getResult());
-      System.out.println("\n=============================\n");
+      System.out.println("\n저장된 결과: " + resultManager.getResult() + "\n");
+      printFooter(30);
     }
   }
 
   // 가장 먼저 저장된 결과 삭제
   public void removeResult() {
     if (resultManager.getResult().isEmpty()) {
-      printNoResultsMessage();
+      System.out.println(NO_RESULTS);
+      printFooter(30);
     } else {
-      System.out.println("\n" + resultManager.getResult().get(0) + " 이 삭제되었습니다.");
-      System.out.println("\n=============================\n");
+      System.out.println("\n" + resultManager.getResult().get(0) + " 이 삭제되었습니다.\n");
+      printFooter(30);
       resultManager.getResult().remove(0);
     }
   }
@@ -73,38 +78,39 @@ public class Menu {
   // 모든 결과 삭제
   public void removeAllResults() {
     if (resultManager.getResult().isEmpty()) {
-      printNoResultsMessage();
+      System.out.println(NO_RESULTS);
+      printFooter(30);
     } else {
-      System.out.println("\n모든 결과가 삭제되었습니다.");
-      System.out.println("\n=============================\n");
+      System.out.println(ALL_RESULT_DELETED);
+      printFooter(30);
       resultManager.getResult().clear();
     }
   }
 
-  // 저장된 결과가 없을 때 출력하는 메세지
-  public void printNoResultsMessage() {
-    System.out.println("\n저장된 계산 결과가 없습니다.");
-    System.out.println("\n=============================\n");
-  }
-
   // 안내 문구 출력
   private void printInstructions() {
-    System.out.println("\n안내 문구를 출력합니다.");
-    System.out.println("\n=============입력=============");
-    System.out.println("임력 예시: 1 + 2 (띄어쓰기 구분 없음)");
-    System.out.println("덧셈: 1 + 2");
-    System.out.println("뺄셈: 1 - 2");
-    System.out.println("곱셈: 1 * 2");
-    System.out.println("나눗셈: 1 / 2");
-    System.out.println("나머지 연산: 1 % 2");
-    System.out.println("제곱: 1 ^ 2");
-    System.out.println("============================\n");
+    printHeader("사용 방법", 30);
+    System.out.printf("%-5s - %s%n", "입력 예", "1+, 3-1, 4*, 8/4");
+    System.out.printf("%-5s - %s%n", "연산자", "+, -, *, /, %, ^");
+    printFooter(30);
 
-    System.out.println("\n=============명령어=============");
-    System.out.println("'exit' 입력 시 프로그램이 종료됩니다.");
-    System.out.println("'ls' 입력 시 저장된 모든 결과를 출력합니다.");
-    System.out.println("'a' 입력 시 가장 먼저 저장된 결과가 삭제됩니다.");
-    System.out.println("'ac' 입력 시 모든 결과가 삭제됩니다.");
-    System.out.println("=============================\n");
+    printHeader("명령어", 30);
+    System.out.printf("%-5s - %s%n", "exit", "프로그램 종료");
+    System.out.printf("%-5s - %s%n", "ls", "저장된 결과 출력");
+    System.out.printf("%-5s - %s%n", "a", "가장 먼저 저장된 결과 삭제");
+    System.out.printf("%-5s - %s%n", "ac", "모든 결과 삭제");
+    printFooter(30);
+  }
+
+  // 구분선을 출력하는 메서드
+  private void printHeader(String title, int length) {
+    String line = "=".repeat(length);
+    System.out.println("\n" + line);
+    System.out.printf("%-" + (length / 2 + title.length() / 2) + "s%n", title);
+    System.out.println(line);
+  }
+
+  private void printFooter(int length) {
+    System.out.println("=".repeat(length));
   }
 }
