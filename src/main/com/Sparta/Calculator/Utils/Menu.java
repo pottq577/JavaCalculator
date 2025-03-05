@@ -90,7 +90,7 @@ public class Menu {
   // 안내 문구 출력
   private void printInstructions() {
     printHeader("사용 방법", 30);
-    System.out.printf("%-5s - %s%n", "입력 예", "1+, 3-1, 4*, 8/4");
+    System.out.printf("%-5s - %s%n", "입력 예", "1+2, 3-1, 4*2, 8/4");
     System.out.printf("%-5s - %s%n", "연산자", "+, -, *, /, %, ^");
     printFooter(30);
 
