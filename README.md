@@ -56,6 +56,16 @@ src/test.com.Sparta.Calculator/
 │─ App/
 │─ Operations/
 │─ Utils/
+
+docs/
+│─ images/
+│	│─ flowchart-detail.png
+│	│─ flowchart-simple.png
+│	│─ UML.png
+│─ xml/
+│	│─ flowchart-detail
+│	│─ flowchart-simple
+│	│─ UML
 ```
 
 <br/>
