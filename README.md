@@ -284,15 +284,15 @@ ac    - 모든 결과 삭제
 ![](docs/images/UML.png)
 
 ### Flowchart
-<details>
-  <summary>간단한 순서도</summary>
-  ![](docs/images/flowchart-simple.png)
-</details>
+- 간단한 순서도
+![](docs/images/flowchart-simple.png)
 
 <details>
   <summary>자세한 순서도</summary>
-  ![](docs/images/flowchart-detail.png)
+  <br>
+  <img src="docs/images/flowchart-detail.png" alt="자세한 순서도">
 </details>
+
 
 <br/>
 
