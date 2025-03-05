@@ -24,7 +24,7 @@ public class InputParser {
    * @param userInput 사용자로부터 입력받은 문자열
    * @return 공백이 있으면 공백을 기준으로, 없으면 한 문자를 기준으로 분리한 후 문자열 배열 반환
    */
-  public String[] splitString(String userInput) {
+  private String[] splitString(String userInput) {
     if (userInput.contains(" ")) {
       return userInput.split(" ");
     } else {
