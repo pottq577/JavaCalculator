@@ -80,7 +80,7 @@ JavaCalculator/
 │       ├── App/
 │       ├── Operations/
 │       └── Utils/
-├── docs/
+├── assets/
 │   ├── images/
 │   │   ├── flowchart-detail.png
 │   │   ├── flowchart-simple.png
