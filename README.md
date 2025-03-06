@@ -124,6 +124,9 @@ JavaCalculator/
 
 <a href="https://velog.io/@pottq577/TIL-26%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-5"><img src="https://img.shields.io/badge/계산기 과제 day5-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
 
+<a href="https://velog.io/@pottq577/TIL-27%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-6"><img src="https://img.shields.io/badge/계산기 과제 day6-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
+
+
 <br/>
 
 ## 🛠️ 주요 기능
