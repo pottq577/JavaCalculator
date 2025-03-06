@@ -1,6 +1,5 @@
-# JavaCalculator
-> 자바의 객체지향적 설계를 중심으로 점진적으로 발전하는<br/>
-계산기 프로젝트입니다.
+
+![header](https://capsule-render.vercel.app/api?type=Venom&color=auto&height=300&section=header&text=JavaCalculator&fontSize=90&desc=자바의%20객체지향적%20설계를%20중심으로%20점진적으로%20발전하는%20계산기%20프로젝트입니다.&descAlignY=70&theme=gruvbox_light)
 
 <br/>
 
@@ -112,6 +111,18 @@ JavaCalculator/
 - 2️⃣ 에서 작성한 코드를 기반으로 고급 기능을 적용합니다.
 - `Enum` 을 활용하여 연산자 타입을 관리합니다.
 - 람다 표현식을 사용하여 코드 가독성과 유지보수성을 향상합니다.
+
+### 자세한 개발 과정은 아래 블로그를 참조해주세요.
+
+<a href="https://velog.io/@pottq577/TIL-23%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-1"><img src="https://img.shields.io/badge/계산기 과제 day1-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
+
+<a href="https://velog.io/@pottq577/TIL-24%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-2"><img src="https://img.shields.io/badge/계산기 과제 day2-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
+
+<a href="https://velog.io/@pottq577/TIL-25%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-3"><img src="https://img.shields.io/badge/계산기 과제 day3-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
+
+<a href="https://velog.io/@pottq577/TIL-26%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-4"><img src="https://img.shields.io/badge/계산기 과제 day4-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
+
+<a href="https://velog.io/@pottq577/TIL-26%EC%9D%BC%EC%B0%A8-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%BC%EC%A0%9C-day-5"><img src="https://img.shields.io/badge/계산기 과제 day5-20C997?style=for-the-badge&logo=Velog&logoColor=white"/></a>
 
 <br/>
 
