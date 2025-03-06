@@ -330,18 +330,18 @@ ac    - 모든 결과 삭제
 
 ## 📝 프로젝트 명세
 ###  클래스 다이어그램 UML
-![](docs/images/UML.png)
+![](assets/images/UML.png)
 
 ### Flowchart
 - [ 간단한 순서도 ]
 
-![](docs/images/flowchart-simple.png)
+![](assets/images/flowchart-simple.png)
 
 
 <details>
   <summary>[ 자세한 순서도 ] </summary>
   <br>
-  <img src="docs/images/flowchart-detail.png" alt="자세한 순서도">
+  <img src="assets/images/flowchart-detail.png" alt="자세한 순서도">
 </details>
 
 
