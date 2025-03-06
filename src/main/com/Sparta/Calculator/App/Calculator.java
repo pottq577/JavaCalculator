@@ -53,7 +53,10 @@ public class Calculator {
   }
 
   /**
-   * 사용자 입력 문자열 전처리 과정 - 문자열을 문자열 배열로 변환 (공백 제거) - 문자열 형태의 숫자를 실수형으로 변환 - 최종 결과를 ArrayList에 저장
+   * 사용자 입력 문자열 전처리 과정
+   * - 문자열을 문자열 배열로 변환 (공백 제거)
+   * - 문자열 형태의 숫자를 실수형으로 변환
+   * - 최종 결과를 ArrayList에 저장
    *
    * @param userInput 사용자 입력 문자열
    * @return [피연산자(double), 연산자(String), 피연산자(double)] 형태의 ArrayList
